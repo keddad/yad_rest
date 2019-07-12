@@ -12,7 +12,7 @@ build/
 develop-eggs/
 dist/
 downloads/
-eggs/
+eggs/e
 .eggs/
 lib/
 lib64/
@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# pycharm
+.idea/
