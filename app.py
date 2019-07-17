@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
+import util
 
 app = Flask(__name__)
 api = Api(app)
@@ -10,7 +11,7 @@ db = client["database"]
 
 
 class Importer(Resource):
-    def post(self):
+    def post(self) -> Response:
         """
         Handles process of new citizens insertion
         """
@@ -21,7 +22,9 @@ class Importer(Resource):
             return Response(status=400)
         import_id = db["collections"].count() + 1
         json_data["import_id"] = import_id
-        db["collections"].insert_one(json_data)
+        for citizen in json_data["citizens"]:
+            citizen["import_id"] = import_id
+            db["collections"].insert_one(citizen)
         return Response(
             response=jsonify({
                 "data": {
@@ -34,11 +37,24 @@ class Importer(Resource):
 
 
 class Patcher(Resource):
-    def patch(self, import_id: int, citizen_id: int):
+    def patch(self, import_id: int, citizen_id: int) -> Response:
         """
         Handles process of editing citizens
         """
-        pass
+        json_data = request.get_json(force=True)
+        if not len(json_data):
+            return Response(status=400)
+        db["collection"].update_one(
+            {"import_id": import_id, "citizen_id": citizen_id},
+            {"$set": json_data}
+        )
+        updated_citizen = db["collection"].find_one({"import_id": import_id, "citizen_id": citizen_id})
+        del updated_citizen["import_id"]
+        return Response(
+            response=updated_citizen,
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class DataFetcher(Resource):
