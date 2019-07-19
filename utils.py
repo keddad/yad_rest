@@ -13,7 +13,6 @@ def month(wtf: str) -> str:
 
 
 def birthdays_counter(dataset: list) -> dict:
-    needed_keys = [False for _ in range(13)]
     citizen_data, out = dict(), dict()
     for element in dataset:
         for relative in element["relatives"]:
@@ -35,11 +34,8 @@ def birthdays_counter(dataset: list) -> dict:
                     "presents": value
                 }
             )
-    for key in out.keys():
-        needed_keys[key] = True
-
     for i in range(1, 13):
-        if not out[needed_keys[i]]:
-            out[needed_keys] = list()
+        if not out[str(i)]:
+            out[str(i)] = list()
 
     return out
