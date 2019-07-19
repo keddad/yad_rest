@@ -44,14 +44,14 @@ class Patcher(Resource):
         json_data = request.get_json(force=True)
         if not len(json_data):
             return Response(status=400)
-        db["collection"].update_one(
+        db["collections"].update_one(
             {"import_id": import_id, "citizen_id": citizen_id},
             {"$set": json_data}
         )
-        updated_citizen = db["collection"].find_one({"import_id": import_id, "citizen_id": citizen_id})
-        del updated_citizen["import_id"]
+        updated_citizen = db["collections"].find_one({"import_id": import_id, "citizen_id": citizen_id})
+        del updated_citizen["import_id"]  # Этот костыль вызван моим нежеланием понимать поиск по вложенным документам
         return Response(
-            response=updated_citizen,
+            response=jsonify(updated_citizen),
             status=200,
             mimetype="application/json"
         )
@@ -62,7 +62,16 @@ class DataFetcher(Resource):
         """
         Handles process of getting citizens from group
         """
-        pass
+        data = list()
+        for element in db["collections"].find({"import_id": import_id}):
+            data.insert(element)
+        for element in data:
+            del element["import_id"]
+        return Response(
+            response=jsonify({"data": data}),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class BirthdaysGrouper(Resource):
