@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
-import util
+import utils
 
 app = Flask(__name__)
 api = Api(app)
@@ -79,7 +79,13 @@ class BirthdaysGrouper(Resource):
         """
         Handles process of getting birthdays info
         """
-        pass
+        raw_data = [element for element in db["collections"].find({"import_id": import_id})]
+        processed_data = utils.birthdays_counter(raw_data)
+        return Response(
+            response=jsonify(processed_data),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class PercentileFetcher(Resource):
