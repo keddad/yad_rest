@@ -6,7 +6,7 @@ import utils
 app = Flask(__name__)
 api = Api(app)
 
-client = MongoClient("loaclhost", 27017)
+client = MongoClient("localhost", 27017)
 db = client["database"]
 
 
@@ -62,9 +62,7 @@ class DataFetcher(Resource):
         """
         Handles process of getting citizens from group
         """
-        data = list()
-        for element in db["collections"].find({"import_id": import_id}):
-            data.insert(element)
+        data = [element for element in db["collections"].find({"import_id": import_id})]
         for element in data:
             del element["import_id"]
         return Response(
