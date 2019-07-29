@@ -22,7 +22,7 @@ class Importer(Resource):
             return Response(status=400)
         if not len(json_data["citizens"]):
             return Response(status=400)
-        if utils.borken_relatives(json_data["citizens"]):
+        if utils.broken_relatives(json_data["citizens"]):
             return Response(status=400)
         import_id = utils.next_collection(db)
         for citizen in json_data["citizens"]:
