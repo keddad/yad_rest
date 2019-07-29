@@ -11,6 +11,7 @@ db = client["database"]
 
 
 class Importer(Resource):
+    # noinspection PyMethodMayBeStatic
     def post(self) -> Response:
         """
         Handles process of new citizens insertion
@@ -20,7 +21,9 @@ class Importer(Resource):
             return Response(status=400)
         if not len(json_data["citizens"]):
             return Response(status=400)
-        import_id = db["collections"].count() + 1
+        if utils.borken_relatives(json_data["citizens"]):
+            return Response(status=400)
+        import_id = utils.next_collection(db)
         json_data["import_id"] = import_id
         for citizen in json_data["citizens"]:
             citizen["import_id"] = import_id
@@ -37,6 +40,7 @@ class Importer(Resource):
 
 
 class Patcher(Resource):
+    # noinspection PyMethodMayBeStatic
     def patch(self, import_id: int, citizen_id: int) -> Response:
         """
         Handles process of editing citizens
@@ -58,6 +62,7 @@ class Patcher(Resource):
 
 
 class DataFetcher(Resource):
+    # noinspection PyMethodMayBeStatic
     def get(self, import_id: int):
         """
         Handles process of getting citizens from group
@@ -73,6 +78,7 @@ class DataFetcher(Resource):
 
 
 class BirthdaysGrouper(Resource):
+    # noinspection PyMethodMayBeStatic
     def get(self, import_id: int):
         """
         Handles process of getting birthdays info
@@ -87,6 +93,7 @@ class BirthdaysGrouper(Resource):
 
 
 class PercentileFetcher(Resource):
+    # noinspection PyMethodMayBeStatic
     def get(self, import_id: int):
         """
         Handles percentile creation

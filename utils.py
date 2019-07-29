@@ -39,3 +39,21 @@ def birthdays_counter(dataset: list) -> dict:
             out[str(i)] = list()
 
     return out
+
+
+def broken_relatives(citizens: list) -> bool:
+    try:
+        checked = list()
+        for citizen in citizens:
+            for rel in citizen["relatives"]:
+                if rel in checked:
+                    continue
+                if not citizen["citizen_id"] in citizens[rel]["relatives"]:
+                    return True
+            checked.insert(citizen["citizen_id"])
+    except (KeyError, IndentationError):
+        return True
+    return False
+
+def next_collection(db) -> int:
+    raise NotImplementedError
