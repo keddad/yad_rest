@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
+
 import utils
 
 app = Flask(__name__)
@@ -24,10 +25,8 @@ class Importer(Resource):
         if utils.borken_relatives(json_data["citizens"]):
             return Response(status=400)
         import_id = utils.next_collection(db)
-        json_data["import_id"] = import_id
         for citizen in json_data["citizens"]:
-            citizen["import_id"] = import_id
-            db["collections"].insert_one(citizen)
+            db[import_id].insert_one(citizen)
         return Response(
             response=jsonify({
                 "data": {
@@ -48,12 +47,13 @@ class Patcher(Resource):
         json_data = request.get_json(force=True)
         if not len(json_data):
             return Response(status=400)
-        db["collections"].update_one(
-            {"import_id": import_id, "citizen_id": citizen_id},
+        # TODO Add check if user exists
+        # TODO Add relatives update
+        db[import_id].update_one(
+            {"citizen_id": citizen_id},
             {"$set": json_data}
         )
-        updated_citizen = db["collections"].find_one({"import_id": import_id, "citizen_id": citizen_id})
-        del updated_citizen["import_id"]  # Этот костыль вызван моим нежеланием понимать поиск по вложенным документам
+        updated_citizen = db[import_id].find_one({"citizen_id": citizen_id})
         return Response(
             response=jsonify(updated_citizen),
             status=200,
@@ -67,9 +67,7 @@ class DataFetcher(Resource):
         """
         Handles process of getting citizens from group
         """
-        data = [element for element in db["collections"].find({"import_id": import_id})]
-        for element in data:
-            del element["import_id"]
+        data = [element for element in db[import_id].find()]
         return Response(
             response=jsonify({"data": data}),
             status=200,
@@ -83,7 +81,7 @@ class BirthdaysGrouper(Resource):
         """
         Handles process of getting birthdays info
         """
-        raw_data = [element for element in db["collections"].find({"import_id": import_id})]
+        raw_data = [element for element in db[import_id].find()]
         processed_data = utils.birthdays_counter(raw_data)
         return Response(
             response=jsonify(processed_data),
@@ -95,6 +93,7 @@ class BirthdaysGrouper(Resource):
 class PercentileFetcher(Resource):
     # noinspection PyMethodMayBeStatic
     def get(self, import_id: int):
+        # TODO
         """
         Handles percentile creation
         """
