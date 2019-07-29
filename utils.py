@@ -48,15 +48,12 @@ def broken_relatives(citizens: list) -> bool:
             for rel in citizen["relatives"]:
                 if rel in checked:
                     continue
-                # noinspection PyTypeChecker
                 if not citizen["citizen_id"] in citizens[rel]["relatives"]:
                     return True
-            checked.append(citizen["citizen_id"])
+            checked.insert(citizen["citizen_id"])
     except (KeyError, IndentationError):
         return True
     return False
 
-
 def next_collection(db) -> int:
-    # TODO
     raise NotImplementedError
