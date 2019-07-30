@@ -47,7 +47,8 @@ class Patcher(Resource):
         json_data = request.get_json(force=True)
         if not len(json_data):
             return Response(status=400)
-        # TODO Add check if user exists
+        if not db[import_id].count({"citizen_id": citizen_id}):
+            return Response(status=400)
         # TODO Add relatives update
         db[import_id].update_one(
             {"citizen_id": citizen_id},
