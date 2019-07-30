@@ -61,4 +61,4 @@ def broken_relatives(citizens: list) -> bool:
 
 def next_collection(db) -> int:
     current_collections = db.list_collection_names(filter=collection_filter)
-    return len(current_collections) + 2
+    return len(current_collections) + 1
