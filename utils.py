@@ -3,6 +3,8 @@ Not my best code
 But is still (probably) works!
 """
 
+collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
+
 
 def month(wtf: str) -> str:
     wtf = wtf.split(".")[1]
@@ -48,6 +50,7 @@ def broken_relatives(citizens: list) -> bool:
             for rel in citizen["relatives"]:
                 if rel in checked:
                     continue
+                # noinspection PyTypeChecker
                 if not citizen["citizen_id"] in citizens[rel]["relatives"]:
                     return True
             checked.insert(citizen["citizen_id"])
@@ -55,5 +58,7 @@ def broken_relatives(citizens: list) -> bool:
         return True
     return False
 
+
 def next_collection(db) -> int:
-    raise NotImplementedError
+    current_collections = db.list_collection_names(filter=collection_filter)
+    return len(current_collections) + 2
