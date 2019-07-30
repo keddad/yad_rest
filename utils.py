@@ -1,3 +1,5 @@
+from datetime import datetime
+
 """
 Not my best code
 But is still (probably) works!
@@ -62,3 +64,11 @@ def broken_relatives(citizens: list) -> bool:
 def next_collection(db) -> int:
     current_collections = db.list_collection_names(filter=collection_filter)
     return len(current_collections) + 1
+
+
+def datetime_correct(dat: str) -> bool:
+    try:
+        null = datetime(*[int(x) for x in dat.split(".")[::-1]])
+        return True
+    except:
+        return False
