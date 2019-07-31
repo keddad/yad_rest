@@ -70,5 +70,5 @@ def datetime_correct(dat: str) -> bool:
     try:
         null = datetime(*[int(x) for x in dat.split(".")[::-1]])
         return True
-    except:
+    except ValueError:
         return False
