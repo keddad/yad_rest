@@ -24,9 +24,11 @@ class Importer(Resource):
             return Response(status=400)
         if utils.broken_relatives(json_data["citizens"]):
             return Response(status=400)
-        import_id = utils.next_collection(db)
         for citizen in json_data["citizens"]:
-            db[import_id].insert_one(citizen)
+            if not utils.datetime_correct(citizen["birth_date"]):
+                return Response(status=400)
+        import_id = utils.next_collection(db)
+        db[import_id].insert_many(json_data["citizens"])
         return Response(
             response=jsonify({
                 "data": {
