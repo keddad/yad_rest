@@ -64,6 +64,11 @@ def next_collection(db) -> int:
 def datetime_correct(dat: str) -> bool:
     try:
         null = datetime(*[int(x) for x in dat.split(".")[::-1]])
+        null = str.split(".")
+        if len(null) != 3:
+            return False
+        if len(null[0]) != 2 or len(null[1) != 2 or len(null[2]) != 4:
+            return False
         return True
     except ValueError:
         return False
