@@ -67,7 +67,7 @@ def datetime_correct(dat: str) -> bool:
         null = str.split(".")
         if len(null) != 3:
             return False
-        if len(null[0]) != 2 or len(null[1) != 2 or len(null[2]) != 4:
+        if len(null[0]) != 2 or len(null[1]) != 2 or len(null[2]) != 4:
             return False
         return True
     except ValueError:
