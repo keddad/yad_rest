@@ -51,6 +51,10 @@ class Patcher(Resource):
             return Response(status=400)
         if not db[import_id].count({"citizen_id": citizen_id}):
             return Response(status=400)
+        if "birth_date" in json_data:
+            if not utils.datetime_correct(json_data["birth_date"]):
+                return Response(status=400)
+
         # TODO Add relatives update
         db[import_id].update_one(
             {"citizen_id": citizen_id},
@@ -58,7 +62,7 @@ class Patcher(Resource):
         )
         updated_citizen = db[import_id].find_one({"citizen_id": citizen_id})
         return Response(
-            response=jsonify(updated_citizen),
+            response=jsonify({"data": updated_citizen}),
             status=200,
             mimetype="application/json"
         )

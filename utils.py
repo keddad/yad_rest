@@ -1,10 +1,5 @@
 from datetime import datetime
 
-"""
-Not my best code
-But is still (probably) works!
-"""
-
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
 
