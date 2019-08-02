@@ -42,7 +42,7 @@ class Importer(Resource):
 
 class Patcher(Resource):
     # noinspection PyMethodMayBeStatic
-    def patch(self, import_id: int, citizen_id: int) -> Response:
+    def put(self, import_id: int, citizen_id: int) -> Response:
         """
         Handles process of editing citizens
         """
