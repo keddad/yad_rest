@@ -25,13 +25,17 @@ class Importer(Resource):
         """
         json_data = request.get_json(force=True)  # force needed to handle wrong MIME types, probably useless
         if "citizens" not in json_data:
+            logger.log(30, f"Got no citizens in json_data")
             return Response(status=400)
         if not len(json_data["citizens"]):
+            logger.log(30, f"Got len of citizens < 1")
             return Response(status=400)
         if utils.broken_relatives(json_data["citizens"]):
+            logger.log(30, f"Got broken relatives")
             return Response(status=400)
         for citizen in json_data["citizens"]:
             if not utils.datetime_correct(citizen["birth_date"]):
+                logger.log(30, f"Got broken date {citizen['birth_date']}")
                 return Response(status=400)
         import_id = utils.next_collection(db)
         db[import_id].insert_many(json_data["citizens"])
@@ -120,4 +124,4 @@ api.add_resource(BirthdaysGrouper, "/imports/<int:import_id>/citizens/birthdays"
 api.add_resource(PercentileFetcher, "/imports/<int:import_id>/towns/stat/percentile/age")
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080)

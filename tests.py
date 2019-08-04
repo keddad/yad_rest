@@ -7,7 +7,7 @@ from pymongo import MongoClient
 
 from app import app
 
-filter = {"name": {"$regex": r"^(?!system\.)"}}
+collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
 
 class TestImporter(unittest.TestCase):
@@ -22,7 +22,7 @@ class TestImporter(unittest.TestCase):
 
     def test_insertion(self) -> None:
         r = requests.post(
-            "http://localhost/imports:8080",
+            "http://localhost:8080/imports",
             json=self.normal_case
         )
         self.assertEqual(r.status_code,
@@ -37,11 +37,11 @@ class TestImporter(unittest.TestCase):
 
     def check_errors(self) -> None:
         r_rels = requests.post(
-            "http://localhost/imports:8080",
+            "http://localhost:8080/imports",
             json=self.broken_rels_case
         )
         r_data = requests.post(
-            "http://localhost/imports:8080",
+            "http://localhost:8080/imports",
             json=self.broken_date_case
         )
         self.assertEqual(r_rels.status_code,
@@ -56,5 +56,10 @@ class TestImporter(unittest.TestCase):
     def tearDown(self) -> None:
         client = MongoClient("localhost", 27017)
         db = client["database"]
-        for col in db.list_collection_names(filter=filter):
+        for col in db.list_collection_names(filter=collection_filter):
             db[col].drop()
+
+
+if __name__ == '__main__':
+    unittest.main()
+3
