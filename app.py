@@ -1,3 +1,6 @@
+import logging
+from logging.config import fileConfig
+
 from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
@@ -9,6 +12,9 @@ api = Api(app)
 
 client = MongoClient("localhost", 27017)
 db = client["database"]
+
+fileConfig('logging_config.ini')
+logger = logging.getLogger()
 
 
 class Importer(Resource):
@@ -111,7 +117,7 @@ api.add_resource(Importer, "/imports")
 api.add_resource(Patcher, "/imports/<int:import_id>/citizens/<int:citizen_id>")
 api.add_resource(DataFetcher, "/imports/<int:import_id>/citizens")
 api.add_resource(BirthdaysGrouper, "/imports/<int:import_id>/citizens/birthdays")
-api.add_resource(PercentileFetcher, "/imports/<int:import_id>/citizens/birthdays")
+api.add_resource(PercentileFetcher, "/imports/<int:import_id>/towns/stat/percentile/age")
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
