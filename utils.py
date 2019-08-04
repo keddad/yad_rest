@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
@@ -42,15 +42,13 @@ def birthdays_counter(dataset: list) -> dict:
 
 def broken_relatives(citizens: list) -> bool:
     try:
-        checked = list()
         for citizen in citizens:
-            for rel in citizen["relatives"]:
-                if rel in checked:
-                    continue
-                # noinspection PyTypeChecker
-                if not citizen["citizen_id"] in citizens[rel]["relatives"]:
+            for relative in citizen["relatives"]:  # проверка на соответствие родственников
+                if not citizen["citizen_id"] in \
+                       list(
+                           filter(
+                               lambda person: person['citizen_id'] == relative, citizens))[0]["relatives"]:
                     return True
-            checked.insert(citizen["citizen_id"])
     except (KeyError, IndentationError):
         return True
     return False
@@ -62,13 +60,11 @@ def next_collection(db) -> int:
 
 
 def datetime_correct(dat: str) -> bool:
+    ds = dat.split(".")
+    if len(ds[0]) != 2 or len(ds[1]) != 2 or len(ds[2]) != 4:
+        return False
     try:
-        null = datetime(*[int(x) for x in dat.split(".")[::-1]])
-        null = str.split(".")
-        if len(null) != 3:
-            return False
-        if len(null[0]) != 2 or len(null[1]) != 2 or len(null[2]) != 4:
-            return False
+        null = date.fromisoformat(f"{dat[6:10]}-{dat[3:5]}-{dat[0:2]}")
         return True
     except ValueError:
         return False
