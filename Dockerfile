@@ -7,5 +7,5 @@ ENV TESTING TRUE
 RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-COPY . .https://www.youtube.com/watch?v=2R21tWs-qCw&t=1s
+COPY . .
 CMD ["flask", "run"]
