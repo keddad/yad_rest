@@ -1,4 +1,5 @@
 import logging
+import os
 from logging.config import fileConfig
 
 from flask import Flask, request, jsonify, Response
@@ -7,10 +8,12 @@ from pymongo import MongoClient
 
 import utils
 
+MONGO_CONTAINER_NAME = "yad_mongo"
+
 app = Flask(__name__)
 api = Api(app)
 
-client = MongoClient("localhost", 27017)
+client = MongoClient(MONGO_CONTAINER_NAME, 27017)
 db = client["database"]
 
 fileConfig('logging_config.ini')
@@ -19,7 +22,7 @@ logger = logging.getLogger()
 
 class Importer(Resource):
     # noinspection PyMethodMayBeStatic
-    def post(self) -> Response:
+    def post(self):
         """
         Handles process of new citizens insertion
         """
@@ -38,7 +41,8 @@ class Importer(Resource):
                 logger.log(30, f"Got broken date {citizen['birth_date']}")
                 return Response(status=400)
         import_id = utils.next_collection(db)
-        db[import_id].insert_many(json_data["citizens"])
+        db[str(import_id)].insert_many(json_data["citizens"])
+        logger.log(30, f"Processed /imports normally")
         return Response(
             response=jsonify({
                 "data": {
@@ -59,18 +63,18 @@ class Patcher(Resource):
         json_data = request.get_json(force=True)
         if not len(json_data):
             return Response(status=400)
-        if not db[import_id].count({"citizen_id": citizen_id}):
+        if not db[str(import_id)].count({"citizen_id": citizen_id}):
             return Response(status=400)
         if "birth_date" in json_data:
             if not utils.datetime_correct(json_data["birth_date"]):
                 return Response(status=400)
 
         # TODO Add relatives update
-        db[import_id].update_one(
+        db[str(import_id)].update_one(
             {"citizen_id": citizen_id},
             {"$set": json_data}
         )
-        updated_citizen = db[import_id].find_one({"citizen_id": citizen_id})
+        updated_citizen = db[str(import_id)].find_one({"citizen_id": citizen_id})
         return Response(
             response=jsonify({"data": updated_citizen}),
             status=200,
@@ -84,7 +88,7 @@ class DataFetcher(Resource):
         """
         Handles process of getting citizens from group
         """
-        data = [element for element in db[import_id].find()]
+        data = [element for element in db[str(import_id)].find()]
         return Response(
             response=jsonify({"data": data}),
             status=200,
@@ -98,7 +102,7 @@ class BirthdaysGrouper(Resource):
         """
         Handles process of getting birthdays info
         """
-        raw_data = [element for element in db[import_id].find()]
+        raw_data = [element for element in db[str(import_id)].find()]
         processed_data = utils.birthdays_counter(raw_data)
         return Response(
             response=jsonify(processed_data),
@@ -117,11 +121,25 @@ class PercentileFetcher(Resource):
         pass
 
 
+class BaseDropper(Resource):
+    # noinspection PyMethodMayBeStatic
+    def post(self):
+        if not os.environ["TESTING"]:
+            return Response(status=403)
+        if os.environ["TESTING"] == "TRUE":
+            for col in db.list_collection_names(filter=utils.collection_filter):
+                db[col].drop()
+                return Response(status=200)
+        else:
+            return Response(status=403)
+
+
 api.add_resource(Importer, "/imports")
 api.add_resource(Patcher, "/imports/<int:import_id>/citizens/<int:citizen_id>")
 api.add_resource(DataFetcher, "/imports/<int:import_id>/citizens")
 api.add_resource(BirthdaysGrouper, "/imports/<int:import_id>/citizens/birthdays")
 api.add_resource(PercentileFetcher, "/imports/<int:import_id>/towns/stat/percentile/age")
+api.add_resource(BaseDropper, "/dropdb")  # For testing purposes
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
