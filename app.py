@@ -2,7 +2,7 @@ import logging
 import os
 from logging.config import fileConfig
 
-from flask import Flask, request, Response
+from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
 
@@ -28,42 +28,46 @@ class Importer(Resource):
         """
         json_data = request.get_json(force=True)  # force needed to handle wrong MIME types, probably useless
         if "citizens" not in json_data:
-            logger.log(20, f"Got no citizens in json_data")
-            return 400
+            logger.log(30, f"Got no citizens in json_data")
+            return Response(status=400)
         if not len(json_data["citizens"]):
-            logger.log(20, f"Got len of citizens < 1")
-            return 400
+            logger.log(30, f"Got len of citizens < 1")
+            return Response(status=400)
         if utils.broken_relatives(json_data["citizens"]):
-            logger.log(20, f"Got broken relatives")
-            return 400
+            logger.log(30, f"Got broken relatives")
+            return Response(status=400)
         for citizen in json_data["citizens"]:
             if not utils.datetime_correct(citizen["birth_date"]):
-                logger.log(20, f"Got broken date {citizen['birth_date']}")
-                return 400
+                logger.log(30, f"Got broken date {citizen['birth_date']}")
+                return Response(status=400)
         import_id = utils.next_collection(db)
         db[str(import_id)].insert_many(json_data["citizens"])
-        response = {
-            "data": {
-                "import_id": import_id
-            }
-        }
-        return response, 201, {"ContentType": "application/json"}
+        logger.log(30, f"Processed /imports normally")
+        return Response(
+            response=jsonify({
+                "data": {
+                    "import_id": import_id
+                }
+            }),
+            status=201,
+            mimetype="application/json"
+        )
 
 
 class Patcher(Resource):
     # noinspection PyMethodMayBeStatic
-    def put(self, import_id: int, citizen_id: int):
+    def put(self, import_id: int, citizen_id: int) -> Response:
         """
         Handles process of editing citizens
         """
         json_data = request.get_json(force=True)
         if not len(json_data):
-            return 400
+            return Response(status=400)
         if not db[str(import_id)].count({"citizen_id": citizen_id}):
-            return 400
+            return Response(status=400)
         if "birth_date" in json_data:
             if not utils.datetime_correct(json_data["birth_date"]):
-                return 400
+                return Response(status=400)
 
         # TODO Add relatives update
         db[str(import_id)].update_one(
@@ -71,7 +75,11 @@ class Patcher(Resource):
             {"$set": json_data}
         )
         updated_citizen = db[str(import_id)].find_one({"citizen_id": citizen_id})
-        return {"data": updated_citizen}, 200, {"ContentType": "application/json"}
+        return Response(
+            response=jsonify({"data": updated_citizen}),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class DataFetcher(Resource):
@@ -81,7 +89,11 @@ class DataFetcher(Resource):
         Handles process of getting citizens from group
         """
         data = [element for element in db[str(import_id)].find()]
-        return {"data": data}, 200, {"ContentType": "application/json"}
+        return Response(
+            response=jsonify({"data": data}),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class BirthdaysGrouper(Resource):
@@ -92,7 +104,11 @@ class BirthdaysGrouper(Resource):
         """
         raw_data = [element for element in db[str(import_id)].find()]
         processed_data = utils.birthdays_counter(raw_data)
-        return {"data": processed_data}, 200, {"ContentType": "application/json"}
+        return Response(
+            response=jsonify(processed_data),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class PercentileFetcher(Resource):
