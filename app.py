@@ -1,8 +1,9 @@
 import logging
 import os
+from json import dumps as jsonify
 from logging.config import fileConfig
 
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, Response
 from flask_restful import Resource, Api
 from pymongo import MongoClient
 
