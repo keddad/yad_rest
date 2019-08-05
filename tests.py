@@ -9,7 +9,7 @@ from app import app
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
 IP = "127.0.0.1"
-PORT = "5000"
+PORT = "8080"
 LOCAL = False
 
 class TestImporter(unittest.TestCase):
