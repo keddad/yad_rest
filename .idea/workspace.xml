@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unittests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="yad_rest" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/utils.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1OVnwHfF9UP6WVjKDjzVJDGN0na" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker-compose.yml" />
+    <property name="nodejs.protractor.protractor_package" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Docker.Compose Server">
+    <configuration name="Run app" type="PythonConfigurationType" factoryName="Python">
+      <module name="yad_rest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test Flask(app.py:app)" type="Python.FlaskServer" show_console_on_std_err="true" show_console_on_std_out="true">
+      <option name="application" value="app" />
+      <output_file path="console_log.txt" is_save="true" />
+      <option name="flaskDebug" value="true" />
+      <module name="yad_rest" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Compose Server" />
+      <item itemvalue="Flask server.Test Flask(app.py:app)" />
+      <item itemvalue="Python.Run app" />
+      <item itemvalue="Python tests.Unittests" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4f32bc96" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@791fec7" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5d9fa1b9" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="" />
+      <created>1562950721878</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562950721878</updated>
+      <workItem from="1562950723198" duration="1321000" />
+      <workItem from="1563121929762" duration="2417000" />
+      <workItem from="1563296486144" duration="4190000" />
+      <workItem from="1563303679323" duration="1756000" />
+      <workItem from="1563355508290" duration="1724000" />
+      <workItem from="1563377055195" duration="5052000" />
+      <workItem from="1563543548668" duration="7043000" />
+      <workItem from="1563560559219" duration="3204000" />
+      <workItem from="1563691803828" duration="11281000" />
+      <workItem from="1563863207316" duration="745000" />
+      <workItem from="1563908758343" duration="36000" />
+      <workItem from="1564071869563" duration="636000" />
+      <workItem from="1564073429332" duration="300000" />
+      <workItem from="1564082066358" duration="25000" />
+      <workItem from="1564402677820" duration="1980000" />
+      <workItem from="1564513133164" duration="6211000" />
+      <workItem from="1564568431967" duration="3542000" />
+      <workItem from="1564573959563" duration="6000" />
+      <workItem from="1564581396083" duration="3153000" />
+      <workItem from="1564587841785" duration="4702000" />
+      <workItem from="1564726339759" duration="7000" />
+      <workItem from="1564759774469" duration="10042000" />
+      <workItem from="1564837881969" duration="52000" />
+      <workItem from="1564856055818" duration="3000" />
+      <workItem from="1564920919207" duration="3308000" />
+      <workItem from="1564924282739" duration="6387000" />
+      <workItem from="1564934090515" duration="6210000" />
+      <workItem from="1564988730584" duration="6735000" />
+    </task>
+    <task id="LOCAL-00001" summary="Updated .gitignore">
+      <created>1562950772398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562950772398</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added some templates">
+      <created>1563297459190</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563297459191</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added requirements">
+      <created>1563297470982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1563297470982</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented Patcher">
+      <created>1563380117395</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563380117395</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implemented DataFetcher">
+      <created>1563544860805</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1563544860805</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implemented BirthdaysGrouper">
+      <created>1563562147280</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1563562147280</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Minior improvements on birthdays_counter">
+      <created>1563562241853</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1563562241853</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed typo">
+      <created>1563863251682</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563863251682</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added broken relatives check in Importer">
+      <created>1564403881157</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1564403881157</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Made code use normal, mongo collections, instead of костыли">
+      <created>1564404421103</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1564404421103</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Revert &quot;Made code use normal, mongo collections, instead of костыли&quot;&#10;&#10;This reverts commit 45feace1">
+      <created>1564404465269</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564404465269</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Made code use normal, mongo collections, instead of костыли">
+      <created>1564404597036</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564404597036</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implemented next_collection">
+      <created>1564517140248</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564517140248</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed typo">
+      <created>1564517244724</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1564517244724</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented datetime correctness checker">
+      <created>1564521827719</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1564521827719</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add &quot;only if exists&quot; statement on update">
+      <created>1564521872493</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1564521872493</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added date checker">
+      <created>1564569095201</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1564569095201</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Updated Exception">
+      <created>1564569411505</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1564569411505</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added bithday checker to Updater">
+      <created>1564581700361</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1564581700361</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed datatime_correct">
+      <created>1564583893749</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1564583893749</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed typo">
+      <created>1564583922602</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1564583922602</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added tests for Importer">
+      <created>1564770985947</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1564770985947</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added logging">
+      <created>1564928071649</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1564928071649</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixed additional functions">
+      <created>1564938974794</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1564938974794</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Fixed test cases">
+      <created>1564939002569</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1564939002569</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Updated .gitignore" />
+    <MESSAGE value="Added some templates" />
+    <MESSAGE value="Added requirements" />
+    <MESSAGE value="Implemented Patcher" />
+    <MESSAGE value="Implemented DataFetcher" />
+    <MESSAGE value="Implemented BirthdaysGrouper" />
+    <MESSAGE value="Minior improvements on birthdays_counter" />
+    <MESSAGE value="Added broken relatives check in Importer" />
+    <MESSAGE value="Revert &quot;Made code use normal, mongo collections, instead of костыли&quot;&#10;&#10;This reverts commit 45feace1" />
+    <MESSAGE value="Made code use normal, mongo collections, instead of костыли" />
+    <MESSAGE value="Implemented next_collection" />
+    <MESSAGE value="Implemented datetime correctness checker" />
+    <MESSAGE value="Add &quot;only if exists&quot; statement on update" />
+    <MESSAGE value="Added date checker" />
+    <MESSAGE value="Updated Exception" />
+    <MESSAGE value="Added bithday checker to Updater" />
+    <MESSAGE value="Fixed datatime_correct" />
+    <MESSAGE value="Fixed typo" />
+    <MESSAGE value="Added tests for Importer" />
+    <MESSAGE value="Added logging" />
+    <MESSAGE value="Fixed additional functions" />
+    <MESSAGE value="Fixed test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed test cases" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="json_data" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/yad_rest$Flask__app_py_.coverage" NAME="Test Flask(app.py:app) Coverage Results" MODIFIED="1564928497619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/yad_rest$Run_app.coverage" NAME="Run app Coverage Results" MODIFIED="1564938856166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1564995149836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>
