@@ -12,6 +12,7 @@ IP = "127.0.0.1"
 PORT = "8080"
 LOCAL = False
 
+
 class TestImporter(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -34,12 +35,12 @@ class TestImporter(unittest.TestCase):
                          msg=f"Got {r.status_code} instead of 201"
                          )
         returned_data = json.loads(r.text)
-        self.assertIs(returned_data["data"]["import_id"],
+        self.assertIs(type(returned_data["data"]["import_id"]),
                       int,
                       msg=f"Got {type(returned_data['data']['import_id'])} instead of int in response"
                       )
 
-    def check_errors(self) -> None:
+    def test_check_errors(self) -> None:
         r_rels = requests.post(
             f"http://{IP}:{PORT}/imports",
             json=self.broken_rels_case
@@ -50,17 +51,17 @@ class TestImporter(unittest.TestCase):
         )
         self.assertEqual(r_rels.status_code,
                          400,
-                         msg=f"Got {r_rels.status_code} instead of 400"
+                         msg=f"Got {r_rels.status_code} instead of 400 on relatives check"
                          )
         self.assertEqual(r_data.status_code,
                          400,
-                         msg=f"Got {r_data.status_code} instead of 400"
+                         msg=f"Got {r_data.status_code} instead of 400 on date check"
                          )
 
     @classmethod
     def tearDownClass(cls) -> None:
         requests.post(f"http://{IP}:{PORT}/dropdb")
 
+
 if __name__ == '__main__':
     unittest.main()
-3

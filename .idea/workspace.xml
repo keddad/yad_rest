@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Compose_Server.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unittests.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/yad_rest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="" />
+    <list id="138d07e6-2fc0-4119-bbbf-9ea8c0521073" name="Made code more simple" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/keddad.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +45,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -66,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.Compose Server">
+  <component name="RunManager" selected="Python tests.Unittests">
     <configuration name="Run app" type="PythonConfigurationType" factoryName="Python">
       <module name="yad_rest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,29 +114,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@35d072c2" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4f32bc96" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7659a7bb" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@791fec7" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5209d181" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5d9fa1b9" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@35d072c2" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7268d068" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -157,6 +133,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="" />
+      <changelist id="138d07e6-2fc0-4119-bbbf-9ea8c0521073" name="Made code more simple" comment="" />
       <created>1562950721878</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -188,7 +165,9 @@
       <workItem from="1564920919207" duration="3308000" />
       <workItem from="1564924282739" duration="6387000" />
       <workItem from="1564934090515" duration="6210000" />
-      <workItem from="1564988730584" duration="6985000" />
+      <workItem from="1564988730584" duration="13677000" />
+      <workItem from="1565005040959" duration="722000" />
+      <workItem from="1565024339708" duration="6545000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore">
       <created>1562950772398</created>
@@ -365,7 +344,56 @@
       <option name="project" value="LOCAL" />
       <updated>1564939002569</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added .idea to sync run profiles">
+      <created>1564995999957</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1564995999957</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Improved tests">
+      <created>1564996023644</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1564996023644</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Now using Docker">
+      <created>1564996037148</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1564996037148</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Made code more simple">
+      <created>1565003495978</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1565003495978</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fixed mimetype">
+      <created>1565026002378</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1565026002378</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Now using port 8080">
+      <created>1565026022011</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1565026022011</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fixed typo">
+      <created>1565026865145</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1565026865145</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,12 +413,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated .gitignore" />
-    <MESSAGE value="Added some templates" />
-    <MESSAGE value="Added requirements" />
     <MESSAGE value="Implemented Patcher" />
     <MESSAGE value="Implemented DataFetcher" />
     <MESSAGE value="Implemented BirthdaysGrouper" />
@@ -405,13 +428,18 @@
     <MESSAGE value="Updated Exception" />
     <MESSAGE value="Added bithday checker to Updater" />
     <MESSAGE value="Fixed datatime_correct" />
-    <MESSAGE value="Fixed typo" />
     <MESSAGE value="Added tests for Importer" />
     <MESSAGE value="Added logging" />
     <MESSAGE value="Fixed additional functions" />
     <MESSAGE value="Fixed test cases" />
     <MESSAGE value="Added .idea to sync run profiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added .idea to sync run profiles" />
+    <MESSAGE value="Improved tests" />
+    <MESSAGE value="Now using Docker" />
+    <MESSAGE value="Made code more simple" />
+    <MESSAGE value="Fixed mimetype" />
+    <MESSAGE value="Now using port 8080" />
+    <MESSAGE value="Fixed typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typo" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -425,6 +453,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/yad_rest$Flask__app_py_.coverage" NAME="Test Flask(app.py:app) Coverage Results" MODIFIED="1564928497619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/yad_rest$Run_app.coverage" NAME="Run app Coverage Results" MODIFIED="1564938856166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1564995149836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1565028365871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

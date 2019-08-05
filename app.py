@@ -113,9 +113,9 @@ class BaseDropper(Resource):
         if os.environ["TESTING"] == "TRUE":
             for col in db.list_collection_names(filter=utils.collection_filter):
                 db[col].drop()
-                return Response(status=200)
+                return 200
         else:
-            return Response(status=403)
+            return 403
 
 
 api.add_resource(Importer, "/imports")

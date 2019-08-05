@@ -49,7 +49,7 @@ def broken_relatives(citizens: list) -> bool:
                            filter(
                                lambda person: person['citizen_id'] == relative, citizens))[0]["relatives"]:
                     return True
-    except (KeyError, IndentationError):
+    except (KeyError, IndentationError, IndexError):
         return True
     return False
 
