@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Compose_Server.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unittests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/yad_rest.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
@@ -181,7 +188,7 @@
       <workItem from="1564920919207" duration="3308000" />
       <workItem from="1564924282739" duration="6387000" />
       <workItem from="1564934090515" duration="6210000" />
-      <workItem from="1564988730584" duration="6735000" />
+      <workItem from="1564988730584" duration="6985000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore">
       <created>1562950772398</created>
@@ -403,7 +410,8 @@
     <MESSAGE value="Added logging" />
     <MESSAGE value="Fixed additional functions" />
     <MESSAGE value="Fixed test cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed test cases" />
+    <MESSAGE value="Added .idea to sync run profiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .idea to sync run profiles" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

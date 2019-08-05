@@ -3,26 +3,30 @@ import unittest
 from pathlib import Path
 
 import requests
-from pymongo import MongoClient
 
 from app import app
 
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
+IP = "127.0.0.1"
+PORT = "5000"
+LOCAL = False
 
 class TestImporter(unittest.TestCase):
-    def setUp(self) -> None:
-        try:
-            app.run(host="0.0.0.0", port=8080)
-        except OSError:
-            pass
-        self.normal_case = json.loads(Path("testing_data/0.json").read_text())
-        self.broken_rels_case = json.loads(Path("testing_data/broken_rel.json").read_text())
-        self.broken_date_case = json.loads(Path("testing_data/broken_date.json").read_text())
+    @classmethod
+    def setUpClass(cls) -> None:
+        if LOCAL:
+            try:
+                app.run(host="0.0.0.0", port=8080)
+            except OSError:
+                pass
+        cls.normal_case = json.loads(Path("testing_data/0.json").read_text())
+        cls.broken_rels_case = json.loads(Path("testing_data/broken_rel.json").read_text())
+        cls.broken_date_case = json.loads(Path("testing_data/broken_date.json").read_text())
 
     def test_insertion(self) -> None:
         r = requests.post(
-            "http://localhost:8080/imports",
+            f"http://{IP}:{PORT}/imports",
             json=self.normal_case
         )
         self.assertEqual(r.status_code,
@@ -37,11 +41,11 @@ class TestImporter(unittest.TestCase):
 
     def check_errors(self) -> None:
         r_rels = requests.post(
-            "http://localhost:8080/imports",
+            f"http://{IP}:{PORT}/imports",
             json=self.broken_rels_case
         )
         r_data = requests.post(
-            "http://localhost:8080/imports",
+            f"http://{IP}:{PORT}/imports",
             json=self.broken_date_case
         )
         self.assertEqual(r_rels.status_code,
@@ -53,12 +57,9 @@ class TestImporter(unittest.TestCase):
                          msg=f"Got {r_data.status_code} instead of 400"
                          )
 
-    def tearDown(self) -> None:
-        client = MongoClient("localhost", 27017)
-        db = client["database"]
-        for col in db.list_collection_names(filter=collection_filter):
-            db[col].drop()
-
+    @classmethod
+    def tearDownClass(cls) -> None:
+        requests.post(f"http://{IP}:{PORT}/dropdb")
 
 if __name__ == '__main__':
     unittest.main()
