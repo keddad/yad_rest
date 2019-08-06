@@ -7,6 +7,7 @@
           <list>
             <option value="mongodb" />
             <option value="app" />
+            <option value="router" />
           </list>
         </option>
         <option name="sourceFilePath" value="docker-compose.yml" />
