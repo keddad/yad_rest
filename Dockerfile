@@ -1,5 +1,4 @@
 FROM alpine:3.10
-VOLUME /usr/src/app/public
 WORKDIR /usr/src/app
 RUN apk add --no-cache python3 && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
@@ -10,7 +9,7 @@ RUN apk add --no-cache python3 && \
 RUN apk add --no-cache \
         uwsgi-python3
 COPY . .
-RUN rm -rf public/*
+ENV TESTING TRUE
 RUN pip3 install --no-cache-dir -r requirements.txt
 CMD [ "uwsgi", "--socket", "0.0.0.0:3031", \
                "--uid", "uwsgi", \
