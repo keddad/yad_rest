@@ -1,4 +1,6 @@
 from datetime import date
+from json import dumps
+
 
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
@@ -55,8 +57,8 @@ def broken_relatives(citizens: list) -> bool:
 
 
 def next_collection(db) -> int:
-    current_collections = db.list_collection_names(filter=collection_filter)
-    return len(current_collections) + 1
+    current_collections = [int(name) for name in db.list_collection_names(filter=collection_filter)]
+    return max(current_collections) + 1
 
 
 def datetime_correct(dat: str) -> bool:
@@ -68,3 +70,7 @@ def datetime_correct(dat: str) -> bool:
         return True
     except ValueError:
         return False
+
+
+def jsonify(element) -> str:
+    return dumps(element, ensure_ascii=False).encode("utf-8")
