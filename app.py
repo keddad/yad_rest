@@ -1,6 +1,5 @@
 import logging
 import os
-from json import dumps as jsonify
 from logging.config import fileConfig
 
 from flask import Flask, request, Response
@@ -42,10 +41,11 @@ class Importer(Resource):
                 logger.log(30, f"Got broken date {citizen['birth_date']}")
                 return Response(status=400)
         import_id = utils.next_collection(db)
+        logger.log(10, f"Colection is {import_id}")
         db[str(import_id)].insert_many(json_data["citizens"])
         logger.log(30, f"Processed /imports normally")
         return Response(
-            response=jsonify({
+            response=utils.jsonify({
                 "data": {
                     "import_id": import_id
                 }
@@ -70,14 +70,19 @@ class Patcher(Resource):
             if not utils.datetime_correct(json_data["birth_date"]):
                 return Response(status=400)
 
-        # TODO Add relatives update
+        if "relatives" in json_data:
+            db[str(import_id)].update_one(
+                {"citizen_id": citizen_id},
+                {"$addToSet": {"relatives": json_data["relatives"]}}
+            )
+            del json_data["citizens"]
         db[str(import_id)].update_one(
             {"citizen_id": citizen_id},
             {"$set": json_data}
         )
         updated_citizen = db[str(import_id)].find_one({"citizen_id": citizen_id})
         return Response(
-            response=jsonify({"data": updated_citizen}),
+            response=utils.jsonify({"data": updated_citizen}),
             status=200,
             mimetype="application/json"
         )
@@ -89,9 +94,13 @@ class DataFetcher(Resource):
         """
         Handles process of getting citizens from group
         """
+        if str(import_id) not in db.list_collection_names(filter=utils.collection_filter):
+            return Response(status=200)
         data = [element for element in db[str(import_id)].find()]
+        for cit in data:
+            del cit["_id"]
         return Response(
-            response=jsonify({"data": data}),
+            response=utils.jsonify({"data": data}),
             status=200,
             mimetype="application/json"
         )
@@ -106,7 +115,7 @@ class BirthdaysGrouper(Resource):
         raw_data = [element for element in db[str(import_id)].find()]
         processed_data = utils.birthdays_counter(raw_data)
         return Response(
-            response=jsonify(processed_data),
+            response=utils.jsonify(processed_data),
             status=200,
             mimetype="application/json"
         )
@@ -130,7 +139,7 @@ class BaseDropper(Resource):
         if os.environ["TESTING"] == "TRUE":
             for col in db.list_collection_names(filter=utils.collection_filter):
                 db[col].drop()
-                return 200
+            return 200
         else:
             return 403
 
