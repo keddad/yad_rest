@@ -27,6 +27,7 @@ class Importer(Resource):
         Handles process of new citizens insertion
         """
         json_data = request.get_json(force=True)  # force needed to handle wrong MIME types, probably useless
+
         if "citizens" not in json_data:
             logger.log(30, f"Got no citizens in json_data")
             return Response(status=400)
@@ -40,8 +41,9 @@ class Importer(Resource):
             if not utils.datetime_correct(citizen["birth_date"]):
                 logger.log(30, f"Got broken date {citizen['birth_date']}")
                 return Response(status=400)
+
         import_id = utils.next_collection(db)
-        logger.log(10, f"Colection is {import_id}")
+        logger.log(10, f"New collection is {import_id}")
         db[str(import_id)].insert_many(json_data["citizens"])
         logger.log(30, f"Processed /imports normally")
         return Response(
@@ -62,6 +64,7 @@ class Patcher(Resource):
         Handles process of editing citizens
         """
         json_data = request.get_json(force=True)
+
         if not len(json_data):
             return Response(status=400)
         if not db[str(import_id)].count({"citizen_id": citizen_id}):
@@ -71,16 +74,29 @@ class Patcher(Resource):
                 return Response(status=400)
 
         if "relatives" in json_data:
-            db[str(import_id)].update_one(
-                {"citizen_id": citizen_id},
-                {"$addToSet": {"relatives": json_data["relatives"]}}
-            )
-            del json_data["citizens"]
+            updated_rels = set(json_data["relatives"])
+            current_rels = set(db[str(import_id)].find_one({"citizen_id": citizen_id})["relatives"])
+            for id in (current_rels - updated_rels):
+                db[str(import_id)].update_one(
+                    {"citizen_id": id},
+                    {"$pullAll": {
+                        "relatives": [citizen_id]
+                    }}
+                )
+            for id in (updated_rels - current_rels):
+                db[str(import_id)].update_one(
+                    {"citizen_id": id},
+                    {"$addToSet": {
+                        "relatives": citizen_id
+                    }}
+                )
+
         db[str(import_id)].update_one(
             {"citizen_id": citizen_id},
             {"$set": json_data}
         )
         updated_citizen = db[str(import_id)].find_one({"citizen_id": citizen_id})
+        del updated_citizen["_id"]
         return Response(
             response=utils.jsonify({"data": updated_citizen}),
             status=200,
@@ -95,7 +111,7 @@ class DataFetcher(Resource):
         Handles process of getting citizens from group
         """
         if str(import_id) not in db.list_collection_names(filter=utils.collection_filter):
-            return Response(status=200)
+            return Response(status=400)
         data = [element for element in db[str(import_id)].find()]
         for cit in data:
             del cit["_id"]

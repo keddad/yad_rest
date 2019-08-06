@@ -58,7 +58,10 @@ def broken_relatives(citizens: list) -> bool:
 
 def next_collection(db) -> int:
     current_collections = [int(name) for name in db.list_collection_names(filter=collection_filter)]
-    return max(current_collections) + 1
+    if len(current_collections):
+        return max(current_collections) + 1
+    else:
+        return 1
 
 
 def datetime_correct(dat: str) -> bool:
