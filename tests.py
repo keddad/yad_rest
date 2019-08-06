@@ -94,12 +94,101 @@ class TestFetcher(unittest.TestCase):
 
     def test_wrong_id(self):
         r = requests.get(
-            f"http://{IP}:{PORT}/imports/-42/citizens"
+            f"http://{IP}:{PORT}/imports/99999999/citizens"
         )
         self.assertEqual(r.status_code,
                          400,
                          msg=f"Got {r.status_code} instead of 400 while fetching")
 
+    @classmethod
+    def tearDownClass(cls) -> None:
+        requests.post(f"http://{IP}:{PORT}/dropdb")
+
+
+class TestPatcher(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        if LOCAL:
+            try:
+                app.run(host="0.0.0.0", port=8080)
+            except OSError:
+                pass
+        cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
+        cls.normal_update = loads(Path("testing_data/update_0.json").read_text())
+        cls.rels_update = loads(Path("testing_data/rels_update_0.json").read_text())
+        r = requests.post(
+            f"http://{IP}:{PORT}/imports",
+            json=cls.normal_case
+        )
+        cls.import_id = loads(r.text)["data"]["import_id"]
+
+    def test_update(self):
+        r = requests.put(
+            f"http://{IP}:{PORT}/imports/{self.import_id}/citizens/1",
+            json=self.normal_update)
+        self.assertEqual(loads(r.text),
+                         {"data":
+                             {
+                                 "citizen_id": 1,
+                                 "town": "Новосибирск",
+                                 "street": "Льва Толстого",
+                                 "building": "16к7стр5",
+                                 "apartment": 7,
+                                 "name": "Артемьев Олег Андреевич",
+                                 "birth_date": "26.12.1986",
+                                 "gender": "male",
+                                 "relatives": [
+                                     3,
+                                     4,
+                                     5,
+                                     7
+                                 ]
+                             }
+                         },
+                         msg=f"Got wrong update response on normal update"
+                         )
+
+        self.assertEqual(r.status_code,
+                         200,
+                         msg=f"Got {r.status_code} instead of 200 while updating")
+
+    def test_rels_update(self):
+        r = requests.put(
+            f"http://{IP}:{PORT}/imports/{self.import_id}/citizens/4",
+            json=self.rels_update)
+
+        self.assertEqual(r.status_code,
+                         200,
+                         msg=f"Got {r.status_code} instead of 200 while updating")
+
+        self.assertEqual(loads(r.text),
+                         {"data": {
+                             "citizen_id": 4,
+                             "town": "Москва",
+                             "street": "Льва Толстого",
+                             "building": "16к7стр5",
+                             "apartment": 7,
+                             "name": "Иванов Сергей Иванович",
+                             "birth_date": "17.04.1997",
+                             "gender": "male",
+                             "relatives": [
+                                 1,
+                                 2,
+                                 5
+                             ]
+                         }},
+                         msg=f"Got wrong update response on relatives update")
+
+        data_after_update = requests.get(
+            f"http://{IP}:{PORT}/imports/{self.import_id}/citizens"
+        )
+        for citizen in loads(data_after_update.text)["data"]:
+            if citizen["citizen_id"] == 1 or citizen["citizen_id"] == 2 or citizen["citizen_id"] == 5:
+                self.assertIn(4,
+                              citizen["relatives"])
+            if citizen["citizen_id"] == 3:
+                self.assertNotIn(4,
+                                 citizen["relatives"])
     @classmethod
     def tearDownClass(cls) -> None:
         requests.post(f"http://{IP}:{PORT}/dropdb")
