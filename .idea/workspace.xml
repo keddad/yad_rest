@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/testing_data/rels_update_0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing_data/update_0.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,12 +108,7 @@
       <serviceView>
         <option name="contentProportion" value="0.16160521" />
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7db094a6" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -164,7 +154,8 @@
       <workItem from="1564988730584" duration="13677000" />
       <workItem from="1565005040959" duration="722000" />
       <workItem from="1565024339708" duration="9113000" />
-      <workItem from="1565089320148" duration="20858000" />
+      <workItem from="1565089320148" duration="21132000" />
+      <workItem from="1565175621636" duration="52000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore">
       <created>1562950772398</created>
@@ -446,7 +437,28 @@
       <option name="project" value="LOCAL" />
       <updated>1565113913959</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixed updater-related bugs">
+      <created>1565117014888</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1565117014888</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Added tests on Patcher">
+      <created>1565117069543</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1565117069543</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Removed strange lines from Dockerfile">
+      <created>1565117089475</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1565117089475</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,9 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented datetime correctness checker" />
-    <MESSAGE value="Add &quot;only if exists&quot; statement on update" />
-    <MESSAGE value="Added date checker" />
     <MESSAGE value="Updated Exception" />
     <MESSAGE value="Added bithday checker to Updater" />
     <MESSAGE value="Fixed datatime_correct" />
@@ -495,7 +504,10 @@
     <MESSAGE value="Added Fetcher tests" />
     <MESSAGE value="Minor bug fixes" />
     <MESSAGE value="Now using Nginx as a router" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now using Nginx as a router" />
+    <MESSAGE value="Fixed updater-related bugs" />
+    <MESSAGE value="Added tests on Patcher" />
+    <MESSAGE value="Removed strange lines from Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed strange lines from Dockerfile" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
