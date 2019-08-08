@@ -72,6 +72,8 @@ class Patcher(Resource):
         if "birth_date" in json_data:
             if not utils.datetime_correct(json_data["birth_date"]):
                 return Response(status=400)
+        if not str(import_id) in db.list_collection_names():
+            return Response(status=400)
 
         if "relatives" in json_data:
             updated_rels = set(json_data["relatives"])
