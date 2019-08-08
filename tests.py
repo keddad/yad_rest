@@ -5,8 +5,6 @@ from pathlib import Path
 
 import requests
 
-from app import app
-
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 logging.getLogger('chardet.charsetprober').setLevel(logging.INFO)
 
@@ -17,10 +15,8 @@ LOCAL = False
 
 def setupServer() -> None:
     if LOCAL:
-        try:
-            app.run(host="0.0.0.0", port=8080)
-        except OSError:
-            pass
+        print("Tests can only be ran using a Docker container")
+        raise EnvironmentError
 
 
 class TestImporter(unittest.TestCase):

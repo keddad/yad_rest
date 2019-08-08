@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,17 +123,6 @@
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceNode@24c83981" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@10252701" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@24c83981" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@10252701" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@3cf15b6e" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@24c83981" type="9fbbdea:ServiceModel$ServiceNode" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4e275d82" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
@@ -188,21 +175,7 @@
       <workItem from="1565175621636" duration="6653000" />
       <workItem from="1565250588962" duration="3722000" />
       <workItem from="1565255113983" duration="733000" />
-      <workItem from="1565262924826" duration="10975000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added requirements">
-      <created>1563297470982</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1563297470982</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Implemented Patcher">
-      <created>1563380117395</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1563380117395</updated>
+      <workItem from="1565262924826" duration="12411000" />
     </task>
     <task id="LOCAL-00005" summary="Implemented DataFetcher">
       <created>1563544860805</created>
@@ -533,7 +506,21 @@
       <option name="project" value="LOCAL" />
       <updated>1565275238179</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Reverted to older Docker config">
+      <created>1565284592455</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1565284592455</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Failed fork-related bug with pymongo">
+      <created>1565284624457</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1565284624458</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,8 +544,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Improved tests" />
-    <MESSAGE value="Now using Docker" />
     <MESSAGE value="Made code more simple" />
     <MESSAGE value="Fixed mimetype" />
     <MESSAGE value="Now using port 8080" />
@@ -582,7 +567,9 @@
     <MESSAGE value="Fixed birthdays_counter" />
     <MESSAGE value="Added collection_exists check to BirthdaysGrouper" />
     <MESSAGE value="Minor performance optimizations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor performance optimizations" />
+    <MESSAGE value="Reverted to older Docker config" />
+    <MESSAGE value="Failed fork-related bug with pymongo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Failed fork-related bug with pymongo" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -596,6 +583,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/yad_rest$Flask__app_py_.coverage" NAME="Test Flask(app.py:app) Coverage Results" MODIFIED="1564928497619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/yad_rest$Run_app.coverage" NAME="Run app Coverage Results" MODIFIED="1565275810863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1565284546888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1565285667270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
