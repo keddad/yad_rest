@@ -1,0 +1,17 @@
+{
+  "data": {
+    "citizen_id": 4,
+    "town": "Москва",
+    "street": "Льва Толстого",
+    "building": "16к7стр5",
+    "apartment": 7,
+    "name": "Иванов Сергей Иванович",
+    "birth_date": "17.04.1997",
+    "gender": "male",
+    "relatives": [
+      1,
+      2,
+      5
+    ]
+  }
+}

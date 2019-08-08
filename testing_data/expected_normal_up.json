@@ -1,0 +1,18 @@
+{
+  "data": {
+    "citizen_id": 1,
+    "town": "Новосибирск",
+    "street": "Льва Толстого",
+    "building": "16к7стр5",
+    "apartment": 7,
+    "name": "Артемьев Олег Андреевич",
+    "birth_date": "26.10.1986",
+    "gender": "male",
+    "relatives": [
+      3,
+      4,
+      5,
+      7
+    ]
+  }
+}
