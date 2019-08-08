@@ -130,6 +130,9 @@ class BirthdaysGrouper(Resource):
         """
         Handles process of getting birthdays info
         """
+        if not str(import_id) in db.list_collection_names():
+            return Response(status=400)
+
         raw_data = [element for element in db[str(import_id)].find()]
         processed_data = utils.birthdays_counter(raw_data)
         return Response(

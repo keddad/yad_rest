@@ -15,14 +15,18 @@ PORT = "8080"
 LOCAL = False
 
 
+def setupServer() -> None:
+    if LOCAL:
+        try:
+            app.run(host="0.0.0.0", port=8080)
+        except OSError:
+            pass
+
+
 class TestImporter(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        if LOCAL:
-            try:
-                app.run(host="0.0.0.0", port=8080)
-            except OSError:
-                pass
+        setupServer()
         cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
         cls.broken_rels_case = loads(Path("testing_data/broken_rel.json").read_text())
         cls.broken_date_case = loads(Path("testing_data/broken_date.json").read_text())
@@ -68,11 +72,7 @@ class TestImporter(unittest.TestCase):
 class TestFetcher(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        if LOCAL:
-            try:
-                app.run(host="0.0.0.0", port=8080)
-            except OSError:
-                pass
+        setupServer()
         cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
         r = requests.post(
             f"http://{IP}:{PORT}/imports",
@@ -108,14 +108,13 @@ class TestFetcher(unittest.TestCase):
 class TestPatcher(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        if LOCAL:
-            try:
-                app.run(host="0.0.0.0", port=8080)
-            except OSError:
-                pass
+        setupServer()
         cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
         cls.normal_update = loads(Path("testing_data/update_0.json").read_text())
         cls.rels_update = loads(Path("testing_data/rels_update_0.json").read_text())
+        cls.expected_rels_result = loads(Path("testing_data/expected_rels_up.json").read_text())
+        cls.expected_normal_result = loads(Path("testing_data/expected_normal_up.json").read_text())
+
         r = requests.post(
             f"http://{IP}:{PORT}/imports",
             json=cls.normal_case
@@ -126,27 +125,10 @@ class TestPatcher(unittest.TestCase):
         r = requests.put(
             f"http://{IP}:{PORT}/imports/{self.import_id}/citizens/1",
             json=self.normal_update)
-        self.assertEqual(loads(r.text),
-                         {"data":
-                             {
-                                 "citizen_id": 1,
-                                 "town": "Новосибирск",
-                                 "street": "Льва Толстого",
-                                 "building": "16к7стр5",
-                                 "apartment": 7,
-                                 "name": "Артемьев Олег Андреевич",
-                                 "birth_date": "26.12.1986",
-                                 "gender": "male",
-                                 "relatives": [
-                                     3,
-                                     4,
-                                     5,
-                                     7
-                                 ]
-                             }
-                         },
-                         msg=f"Got wrong update response on normal update"
-                         )
+        self.assertDictEqual(loads(r.text),
+                             self.expected_normal_result,
+                             msg=f"Got wrong update response on normal update"
+                             )
 
         self.assertEqual(r.status_code,
                          200,
@@ -161,23 +143,9 @@ class TestPatcher(unittest.TestCase):
                          200,
                          msg=f"Got {r.status_code} instead of 200 while updating")
 
-        self.assertEqual(loads(r.text),
-                         {"data": {
-                             "citizen_id": 4,
-                             "town": "Москва",
-                             "street": "Льва Толстого",
-                             "building": "16к7стр5",
-                             "apartment": 7,
-                             "name": "Иванов Сергей Иванович",
-                             "birth_date": "17.04.1997",
-                             "gender": "male",
-                             "relatives": [
-                                 1,
-                                 2,
-                                 5
-                             ]
-                         }},
-                         msg=f"Got wrong update response on relatives update")
+        self.assertDictEqual(loads(r.text),
+                             self.expected_rels_result,
+                             msg=f"Got wrong update response on relatives update")
 
         data_after_update = requests.get(
             f"http://{IP}:{PORT}/imports/{self.import_id}/citizens"
@@ -189,6 +157,42 @@ class TestPatcher(unittest.TestCase):
             if citizen["citizen_id"] == 3:
                 self.assertNotIn(4,
                                  citizen["relatives"])
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        requests.post(f"http://{IP}:{PORT}/dropdb")
+
+
+class TestRelatives(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        setupServer()
+        cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
+        cls.normal_response = loads(Path("testing_data/birthdays_0.json").read_text())
+        r = requests.post(
+            f"http://{IP}:{PORT}/imports",
+            json=cls.normal_case
+        )
+        cls.import_id = loads(r.text)["data"]["import_id"]
+
+    def test_normal(self):
+        r = requests.get(
+            f"http://{IP}:{PORT}/imports/{self.import_id}/citizens/birthdays",
+        )
+
+        self.assertDictEqual(loads(r.text),
+                             self.normal_response,
+                             msg=f"Got wrong response on birthdays counter")
+
+    def test_error(self):
+        r = requests.get(
+            f"http://{IP}:{PORT}/imports/9999999/citizens/birthdays",
+        )
+
+        self.assertEqual(r.status_code,
+                         400,
+                         msg=f"Got {r.status_code} instead of 400 while updating")
+
     @classmethod
     def tearDownClass(cls) -> None:
         requests.post(f"http://{IP}:{PORT}/dropdb")
