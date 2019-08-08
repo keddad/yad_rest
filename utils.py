@@ -1,9 +1,11 @@
 from datetime import date
+from functools import lru_cache
 from json import dumps
 
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
 
+@lru_cache(maxsize=12)
 def month(wtf: str) -> str:
     wtf = wtf.split(".")[1]
     if wtf == "10":
