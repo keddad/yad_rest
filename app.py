@@ -13,7 +13,7 @@ MONGO_CONTAINER_NAME = "yad_mongo"
 app = Flask(__name__)
 api = Api(app)
 
-client = MongoClient(MONGO_CONTAINER_NAME, 27017)
+client = MongoClient(MONGO_CONTAINER_NAME, 27017, connect=False)
 db = client["database"]
 
 fileConfig('logging_config.ini')
