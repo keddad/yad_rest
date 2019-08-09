@@ -194,5 +194,40 @@ class TestRelatives(unittest.TestCase):
         requests.post(f"http://{IP}:{PORT}/dropdb")
 
 
+class TestPercentile(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        setupServer()
+        cls.normal_case = loads(Path("testing_data/data_0.json").read_text())
+        cls.normal_response = loads(Path("testing_data/percentile_0.json").read_text())
+        r = requests.post(
+            f"http://{IP}:{PORT}/imports",
+            json=cls.normal_case
+        )
+        cls.import_id = loads(r.text)["data"]["import_id"]
+
+    def test_normal(self):
+        r = requests.get(
+            f"http://{IP}:{PORT}/imports/{self.import_id}/towns/stat/percentile/age",
+        )
+
+        self.assertDictEqual(loads(r.text),
+                             self.normal_response,
+                             msg=f"Got wrong response on birthdays counter")
+
+    def test_error(self):
+        r = requests.get(
+            f"http://{IP}:{PORT}/imports/9999999/towns/stat/percentile/age",
+        )
+
+        self.assertEqual(r.status_code,
+                         400,
+                         msg=f"Got {r.status_code} instead of 400 while updating")
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        requests.post(f"http://{IP}:{PORT}/dropdb")
+
+
 if __name__ == '__main__':
     unittest.main()

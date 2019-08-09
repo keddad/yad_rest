@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e585f1a4-2981-499a-a100-48ea91dea7af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_data/percentile_0.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing_data/birthdays_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing_data/birthdays_0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.Compose Server">
+  <component name="RunManager" selected="Python tests.Unittests">
     <configuration name="Run app" type="PythonConfigurationType" factoryName="Python">
       <module name="yad_rest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,14 +174,7 @@
       <workItem from="1565250588962" duration="3722000" />
       <workItem from="1565255113983" duration="733000" />
       <workItem from="1565262924826" duration="12759000" />
-      <workItem from="1565349932393" duration="2198000" />
-    </task>
-    <task id="LOCAL-00007" summary="Minior improvements on birthdays_counter">
-      <created>1563562241853</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1563562241853</updated>
+      <workItem from="1565349932393" duration="2860000" />
     </task>
     <task id="LOCAL-00008" summary="Fixed typo">
       <created>1563863251682</created>
@@ -521,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565286057100</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Added numpy and deps">
+      <created>1565352156348</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1565352156348</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now using port 8080" />
     <MESSAGE value="Fixed typo" />
     <MESSAGE value="Staged diff" />
     <MESSAGE value="Revert &quot;Fixed mimetype&quot;&#10;&#10;This reverts commit 31f04960" />
@@ -570,7 +567,8 @@
     <MESSAGE value="Failed fork-related bug with pymongo" />
     <MESSAGE value="Removed useless option to start local server while testing" />
     <MESSAGE value="Got more or less normal readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got more or less normal readme" />
+    <MESSAGE value="Added numpy and deps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added numpy and deps" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -584,6 +582,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/yad_rest$Flask__app_py_.coverage" NAME="Test Flask(app.py:app) Coverage Results" MODIFIED="1564928497619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/yad_rest$Run_app.coverage" NAME="Run app Coverage Results" MODIFIED="1565275810863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1565285667270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/yad_rest$Unittests.coverage" NAME="Unittests Coverage Results" MODIFIED="1565352797097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
