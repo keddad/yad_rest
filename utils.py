@@ -2,6 +2,8 @@ from datetime import date
 from functools import lru_cache
 from json import dumps
 
+from numpy import percentile
+
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 
 
@@ -81,3 +83,30 @@ def datetime_correct(dat: str) -> bool:
 
 def jsonify(element) -> str:
     return dumps(element, ensure_ascii=False).encode("utf-8")
+
+
+def get_age(b_date: str) -> int:
+    normal_date = date.fromisoformat(f"{b_date[6:10]}-{b_date[3:5]}-{b_date[0:2]}")
+    return date.today().year - normal_date.year
+
+
+def percentile_counter(dataset: list) -> list:
+    tmp, out = dict(), list()
+
+    for citizen in dataset:
+        if not citizen["town"] in tmp:
+            tmp[citizen["town"]] = [get_age(citizen["birth_date"])]
+        else:
+            tmp[citizen["town"]].append(get_age(citizen["birth_date"]))
+
+    for (town, ages) in tmp.items():
+        out.append(
+            {
+                "town": town,
+                "p50": int(percentile(ages, 50, interpolation="linear")),
+                "p75": int(percentile(ages, 75, interpolation="linear")),
+                "p99": int(percentile(ages, 99, interpolation="linear"))
+            }
+        )
+
+    return out

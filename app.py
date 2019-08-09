@@ -136,7 +136,7 @@ class BirthdaysGrouper(Resource):
         raw_data = [element for element in db[str(import_id)].find()]
         processed_data = utils.birthdays_counter(raw_data)
         return Response(
-            response=utils.jsonify(processed_data),
+            response=utils.jsonify({"data": processed_data}),
             status=200,
             mimetype="application/json"
         )
@@ -145,11 +145,19 @@ class BirthdaysGrouper(Resource):
 class PercentileFetcher(Resource):
     # noinspection PyMethodMayBeStatic
     def get(self, import_id: int):
-        # TODO
         """
         Handles percentile creation
         """
-        pass
+        if not str(import_id) in db.list_collection_names():
+            return Response(status=400)
+
+        data = [element for element in db[str(import_id)].find()]
+        processed_data = utils.percentile_counter(data)
+        return Response(
+            response=utils.jsonify({"data": processed_data}),
+            status=200,
+            mimetype="application/json"
+        )
 
 
 class BaseDropper(Resource):
