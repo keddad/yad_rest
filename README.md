@@ -33,7 +33,7 @@ ENV TESTING TRUE
 
 * В папке с приложением, выполнить docker-compose, дождаться выполнения процесса.
 ```
-docker-compose -f docker-compose.yml up -d --build mongodb app router
+docker-compose -f docker-compose.yml up -d --build
 ```
 
 * Запустить тесты. Предусматривается, что приложение запущенно на __localhost:8080__, иначе необходимо сменить константы в tests.py.
@@ -56,5 +56,5 @@ ENV TESTING FALSE
 
 * В папке с приложением, выполнить docker-compose, дождаться выполнения процесса.
 ```
-docker-compose -f docker-compose.yml up -d --build mongodb app router
+docker-compose -f docker-compose.yml up -d --build
 ```
