@@ -29,6 +29,7 @@ def birthdays_counter(dataset: list) -> dict:
                 tmp[citizen_month][rel] = 1
             else:
                 tmp[citizen_month][rel] = +1
+    print(tmp)
 
     for (m, value) in tmp.items():
         for (key, presents) in value.items():
@@ -87,7 +88,13 @@ def jsonify(element) -> str:
 
 def get_age(b_date: str) -> int:
     normal_date = date.fromisoformat(f"{b_date[6:10]}-{b_date[3:5]}-{b_date[0:2]}")
-    return date.today().year - normal_date.year
+    year = date.today().year - normal_date.year
+    if date.today().month == normal_date.month:
+        if date.today().day <= normal_date.day:
+            year += 1
+    elif date.today().month < normal_date.month:
+        year += 1
+    return year
 
 
 def percentile_counter(dataset: list) -> list:
