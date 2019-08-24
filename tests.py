@@ -8,7 +8,7 @@ import requests
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
 logging.getLogger('chardet.charsetprober').setLevel(logging.INFO)
 
-IP = "84.201.167.25"
+IP = "127.0.0.1"
 PORT = "8080"
 LOCAL = False
 

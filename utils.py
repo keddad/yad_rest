@@ -100,12 +100,12 @@ def percentile_counter(dataset: list) -> list:
             tmp[citizen["town"]].append(get_age(citizen["birth_date"]))
 
     for (town, ages) in tmp.items():
-        out.append(
+        out.append( 
             {
                 "town": town,
-                "p50": int(percentile(ages, 50, interpolation="linear")),
-                "p75": int(percentile(ages, 75, interpolation="linear")),
-                "p99": int(percentile(ages, 99, interpolation="linear"))
+                "p50": round(percentile(ages, 50, interpolation="linear"), 2),
+                "p75": round(percentile(ages, 75, interpolation="linear"), 2),
+                "p99": round(percentile(ages, 99, interpolation="linear"), 2)
             }
         )
 
