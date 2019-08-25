@@ -2,9 +2,11 @@ from datetime import date
 from functools import lru_cache
 from json import dumps
 
+
 from numpy import percentile
 
 collection_filter = {"name": {"$regex": r"^(?!system\.)"}}
+
 
 
 @lru_cache(maxsize=12)
@@ -28,8 +30,7 @@ def birthdays_counter(dataset: list) -> dict:
             if rel not in tmp[citizen_month]:
                 tmp[citizen_month][rel] = 1
             else:
-                tmp[citizen_month][rel] = +1
-    print(tmp)
+                tmp[citizen_month][rel] += 1
 
     for (m, value) in tmp.items():
         for (key, presents) in value.items():
@@ -87,14 +88,9 @@ def jsonify(element) -> str:
 
 
 def get_age(b_date: str) -> int:
-    normal_date = date.fromisoformat(f"{b_date[6:10]}-{b_date[3:5]}-{b_date[0:2]}")
-    year = date.today().year - normal_date.year
-    if date.today().month == normal_date.month:
-        if date.today().day <= normal_date.day:
-            year += 1
-    elif date.today().month < normal_date.month:
-        year += 1
-    return year
+    born = date.fromisoformat(f"{b_date[6:10]}-{b_date[3:5]}-{b_date[0:2]}")
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 
 def percentile_counter(dataset: list) -> list:
